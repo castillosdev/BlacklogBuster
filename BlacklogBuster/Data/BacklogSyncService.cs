@@ -6,8 +6,6 @@ namespace BlacklogBuster.Data
     {
         private readonly SteamService _steamService;
         private readonly PlayStationService _PlayStationService;
-        //private readonly NintendoService _nintendoService;
-        //private readonly XboxService _xboxService;
         private readonly GameService _gameService;
 
         public BacklogSyncService(SteamService steamService, PlayStationService PlayStationService, GameService gameService)
