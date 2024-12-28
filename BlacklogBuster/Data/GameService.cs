@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BlacklogBuster.Data.Models;
+using Microsoft.EntityFrameworkCore;
 //DB Functions
 namespace BlacklogBuster.Data
 {

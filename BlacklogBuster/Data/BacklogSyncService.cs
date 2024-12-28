@@ -1,17 +1,19 @@
-﻿namespace BlacklogBuster.Data
+﻿using BlacklogBuster.Data.Models;
+
+namespace BlacklogBuster.Data
 {
     public class BacklogSyncService
     {
         private readonly SteamService _steamService;
-        private readonly PlaystationService _playstationService;
+        private readonly PlayStationService _PlayStationService;
         //private readonly NintendoService _nintendoService;
         //private readonly XboxService _xboxService;
         private readonly GameService _gameService;
 
-        public BacklogSyncService(SteamService steamService, PlaystationService playstationService, GameService gameService)
+        public BacklogSyncService(SteamService steamService, PlayStationService PlayStationService, GameService gameService)
         {
             _steamService = steamService;
-            _playstationService = playstationService;
+            _PlayStationService = PlayStationService;
             _gameService = gameService;
         }
         public async Task SyncBacklogAsync(string? steamId, string? psnUsername, string? psnPassword, string userId)
@@ -30,7 +32,7 @@
             if (!string.IsNullOrWhiteSpace(psnUsername) && !string.IsNullOrWhiteSpace(psnPassword))
             {
                 Console.WriteLine("Fetching PlayStation games...");
-                var psGames = await _playstationService.GetGamesAsync(psnUsername, psnPassword);
+                var psGames = await _PlayStationService.GetGamesAsync(psnUsername, psnPassword);
                 await SyncGamesAsync(psGames, "PlayStation", existingGames);
                 Console.WriteLine("PlayStation sync completed.");
             }

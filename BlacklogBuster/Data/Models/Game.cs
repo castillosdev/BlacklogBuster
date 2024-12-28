@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace BlacklogBuster.Data
+namespace BlacklogBuster.Data.Models
 {
     public class Game
     {
@@ -13,7 +13,7 @@ namespace BlacklogBuster.Data
         public string? Status { get; set; }
         public DateTime? LastPlayed { get; set; }
         public int PlayTimeHours { get; set; }
-        public DateTime AddedDate {  get; set; }
+        public DateTime AddedDate { get; set; }
         //Foreign Keys
         public string UserId { get; set; }
         public IdentityUser User { get; set; }
