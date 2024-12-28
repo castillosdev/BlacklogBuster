@@ -32,7 +32,7 @@ namespace BlacklogBuster.Data
             if (!string.IsNullOrWhiteSpace(psnUsername) && !string.IsNullOrWhiteSpace(psnPassword))
             {
                 Console.WriteLine("Fetching PlayStation games...");
-                var psGames = await _PlayStationService.GetGamesAsync(psnUsername, psnPassword);
+                var psGames = await _PlayStationService.GetGamesAsync(psnUsername, psnPassword, userId);
                 await SyncGamesAsync(psGames, "PlayStation", existingGames);
                 Console.WriteLine("PlayStation sync completed.");
             }
