@@ -12,6 +12,7 @@ BlacklogBuster is a Blazor Server application designed to help users manage and 
 - **Game Synchronization**:
   - Sync games from Steam using the Steam API.
   - Sync games from PlayStation using Selenium for scraping data.
+  - In a future update add support for xbox.
 - **User Authentication**:
   - Secure user accounts with ASP.NET Identity.
   - Requires email confirmation for account activation.
