@@ -1,7 +1,10 @@
-﻿namespace BlacklogBuster.Data.Models
+﻿using System.Text.Json.Serialization;
+
+namespace BlacklogBuster.Data.Models
 {
     public class SteamResponse
     {
-            public SteamGameResponse Response { get; set; }
+        [JsonPropertyName("response")]
+        public SteamGamesResponse? Response { get; set; }
     }
 }

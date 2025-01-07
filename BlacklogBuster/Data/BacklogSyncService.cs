@@ -22,7 +22,7 @@ namespace BlacklogBuster.Data
             if (!string.IsNullOrWhiteSpace(steamId))
             {
                 Console.WriteLine("Fetching Steam games...");
-                var steamGames = await _steamService.GetSteamGamesAsync(steamId, userId);
+                var steamGames = await _steamService.GetSteamGamesAsync(steamId);
                 await SyncGamesAsync(steamGames, "Steam", existingGames);
                 Console.WriteLine("Steam sync completed.");
             }
