@@ -47,6 +47,7 @@
                     return new List<Game>();
                 }
 
+
                 var games = new List<Game>();
                 foreach (var game in result.Response.Games)
                 {
@@ -56,10 +57,8 @@
                         games.Add(new Game
                         {
                             Title = gameDetails.Name,
-                            Platform = "Steam",
-                            Status = "Unplayed",
-                            PlayTimeHours = game.PlaytimeForever / 60, // Convert minutes to hours
-                            AddedDate = DateTime.Now,
+                            Platform = new Platform { Name = "Steam" }, // Assuming Platform is a class with a Name property
+                            Metadata = $"Added on {DateTime.Now}", // Assuming Metadata can store additional information
                         });
                     }
                 }

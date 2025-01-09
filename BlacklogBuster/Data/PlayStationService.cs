@@ -52,10 +52,10 @@
                     games.Add(new Game
                     {
                         Title = title,
-                        Platform = platform,
-                        Status = "Unplayed",
-                        AddedDate = DateTime.Now,
-                        UserId = userId
+                        Platform = new Models.Platform { Name = platform },
+                        Metadata = "Unplayed",
+                        ReleaseDate = DateTime.Now,
+                        UserGames = new List<UserGame> { new UserGame { UserId = userId } }
                     });
 
                 }

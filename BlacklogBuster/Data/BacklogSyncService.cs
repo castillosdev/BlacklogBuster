@@ -42,7 +42,7 @@ namespace BlacklogBuster.Data
         {
             foreach (var game in games)
             {
-                var exists = existingGames.Any(g => g.Title == game.Title && g.Platform == platform);
+                var exists = existingGames.Any(g => g.Title == game.Title && g.Platform.Name == platform);
                 if (!exists)
                 {
                     await _gameService.AddGameAsync(game);

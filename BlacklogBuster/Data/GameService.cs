@@ -12,7 +12,10 @@ namespace BlacklogBuster.Data
         }
         public async Task<List<Game>> GetGamesAsync(string userId)
         {
-            return await _context.Games.Where(g => g.UserId == userId).ToListAsync();
+            return await _context.UserGames
+                                 .Where(ug => ug.UserId == userId)
+                                 .Select(ug => ug.Game)
+                                 .ToListAsync();
         }
         public async Task AddGameAsync(Game game)
         {
