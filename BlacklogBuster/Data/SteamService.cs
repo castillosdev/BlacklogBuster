@@ -12,11 +12,7 @@
         public SteamService(HttpClient httpClient, IConfiguration configuration)
         {
             this.httpClient = httpClient;
-            this.apiKey = configuration["SteamApiKey"];
-            if (string.IsNullOrWhiteSpace(this.apiKey))
-            {
-                throw new Exception("Steam API key is missing. Check your appsettings.json or configuration.");
-            }
+            this.apiKey = configuration["SteamApiKey"] ?? throw new Exception("Steam API key is missing. Check your appsettings.json or configuration.");
         }
 
         public async Task<List<Game>> GetSteamGamesAsync(string steamId)
@@ -27,12 +23,12 @@
             }
 
             var url = $"https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={apiKey}&steamid={steamId}&format=json";
+
             try
             {
                 var response = await httpClient.GetAsync(url);
                 var content = await response.Content.ReadAsStringAsync();
 
-                // Log the raw response
                 Console.WriteLine($"Raw API Response: {content}");
 
                 if (!response.IsSuccessStatusCode)
@@ -47,23 +43,23 @@
                     return new List<Game>();
                 }
 
-
-                var games = new List<Game>();
-                foreach (var game in result.Response.Games)
+                var tasks = result.Response.Games.Select(async game =>
                 {
-                    var gameDetails = await GetGameDetailsAsync(game.AppId);
-                    if (!string.IsNullOrWhiteSpace(gameDetails?.Name))
+                    var details = await GetGameDetailsAsync(game.AppId);
+                    if (details != null)
                     {
-                        games.Add(new Game
+                        return new Game
                         {
-                            Title = gameDetails.Name,
-                            Platform = new Platform { Name = "Steam" }, // Assuming Platform is a class with a Name property
-                            Metadata = $"Added on {DateTime.Now}", // Assuming Metadata can store additional information
-                        });
+                            Title = details.Name,
+                            Platform = new Platform { Name = "Steam" },
+                            Metadata = $"Added on {DateTime.Now}",
+                        };
                     }
-                }
+                    return null;
+                });
 
-                return games;
+                var games = await Task.WhenAll(tasks);
+                return games.Where(g => g != null).ToList()!;
             }
             catch (Exception ex)
             {
