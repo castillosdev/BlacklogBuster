@@ -1,20 +1,20 @@
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 
 <PageTitle>BlacklogBuster</PageTitle>
 
-<MudLayout>
-    <MudDrawer Open="true" ClipMode="DrawerClipMode.Always">
+<div class="page">
+    <div class="sidebar">
         <NavMenu />
-    </MudDrawer>
+    </div>
 
-    <MudMainContent>
-        <MudAppBar>
+    <main>
+        <div class="top-row px-4 auth">
             <LoginDisplay />
             <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </MudAppBar>
+        </div>
 
         <article class="content px-4">
             @Body
         </article>
-    </MudMainContent>
-</MudLayout>
+    </main>
+</div>
