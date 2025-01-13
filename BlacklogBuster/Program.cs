@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
-using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +33,7 @@ builder.Services.AddHttpClient<SteamService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMudServices();
+
 
 var app = builder.Build();
 
