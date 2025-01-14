@@ -81,7 +81,7 @@ namespace BlacklogBuster.Data
 
                     games.Add(new Game
                     {
-                        Title = title,
+                        Name = title,
                         Platform = new Models.Platform { Name = platform },
                         Metadata = "Unplayed",
                         ReleaseDate = DateTime.Now,

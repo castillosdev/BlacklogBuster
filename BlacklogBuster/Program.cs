@@ -64,3 +64,44 @@ app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
 app.Run();
+
+// TODO: Define new database models to align with Steam's game data structure.
+// TODO: Add "SteamGame" table with the following fields:
+//       - AppId (int)
+//       - Name (string)
+//       - PlaytimeForever (int)
+//       - ImgIconUrl (string)
+//       - HasCommunityVisibleStats (bool)
+//       - PlaytimeWindowsForever (int)
+//       - PlaytimeMacForever (int)
+//       - PlaytimeLinuxForever (int)
+//       - PlaytimeDeckForever (int)
+//       - RtimeLastPlayed (DateTime)
+//       - PlaytimeDisconnected (int)
+// TODO: Add "SteamGameMetadata" table to hold additional metadata.
+// TODO: Add "UserSteamGames" table to establish relationships between users and Steam games.
+
+// TODO: Create migrations for the new tables and update the database schema.
+// TODO: Write seed data for testing the new structure.
+
+// TODO: Update the "SteamService" class to map API data to the new database structure.
+// TODO: Modify the "GetSteamGamesAsync" method to:
+//       - Retrieve game data from the Steam API.
+//       - Map the data to the new model.
+//       - Save or update game records in the database.
+
+// TODO: Update the "GameService" class to:
+//       - Manage CRUD operations for Steam games.
+//       - Link Steam games to users.
+
+// TODO: Update the database context to include new DbSet properties for the new tables.
+
+// TODO: Test all CRUD operations for the new tables.
+// TODO: Validate that data is correctly mapped and stored in the database.
+
+// TODO: Update the UI to display Steam-specific game data:
+//       - Show playtime, icons, and last played timestamps.
+// TODO: Implement a way to differentiate Steam games from other platforms in the UI.
+
+// TODO: Write unit tests for the new database models.
+// TODO: Write integration tests for the SteamService and GameService updates.
