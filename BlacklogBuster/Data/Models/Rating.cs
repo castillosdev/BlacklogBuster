@@ -1,4 +1,6 @@
-﻿public class Rating
+﻿using BlacklogBuster.Data.Models;
+
+public class Rating
 {
     public int RatingId { get; set; }
     public string Agency { get; set; }

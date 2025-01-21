@@ -33,7 +33,7 @@ namespace BlacklogBuster.Data
                 .HasForeignKey(p => p.PlatformId);
 
             modelBuilder.Entity<Game>()
-                .HasOne(g => g.Platform)
+                .HasOne(g => g.Platforms)
                 .WithMany(pl => pl.Games)
                 .HasForeignKey(g => g.PlatformId);
 

@@ -46,17 +46,15 @@
                 // Map Steam games to your Game model
                 var games = result.Response.Games.Select(game => new Game
                 {
-                    Name = game.Name ?? "Unknown Name", // Map Name directly from API and handle nulls
-                    Platform = new Platform { Name = "Steam" },
-                    Metadata = $"Added on {DateTime.Now}",
-                    SteamAppId = game.AppId, // Map AppId for Steam-specific ID
-                    PlaytimeForever = game.PlaytimeForever, // Total playtime
-                    PlaytimeWindows = game.PlaytimeWindowsForever,
-                    PlaytimeDeck = game.PlaytimeDeckForever,
-                    LastPlayed = game.LastPlayedDate,
-                    GameIcon = !string.IsNullOrEmpty(game.ImgIconUrl)
-                        ? $"https://media.steampowered.com/steamcommunity/public/images/apps/{game.AppId}/{game.ImgIconUrl}.jpg"
-                        : null // Handle missing image URLs
+                    Name = game.Name ?? "Unknown Name", // Map Name from Steam API
+                    Platforms = new Platform { Name = "Steam" }, // Associate with Steam platform
+                    Metadata = $"Added on {DateTime.Now}", // Add metadata
+                    SteamAppId = game.AppId, // Map AppId
+                    PlaytimeForever = game.PlaytimeForever, // Map playtime
+                    PlaytimeWindows = game.PlaytimeWindows,
+                    PlaytimeLinux = game.PlaytimeLinux,
+                    PlaytimeDeck = game.PlaytimeDeck,
+                    LastPlayed = game.LastPlayed,
                 }).ToList();
 
                 return games;
